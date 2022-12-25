@@ -5,7 +5,6 @@ while n > 0:
     if num > max:
         max = num
     n //= 10
-    break
 print(max)
 
     
