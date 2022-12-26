@@ -1,24 +1,33 @@
-﻿Console.WriteLine("Введите кол-во элементов массива: ");
-int n = Convert.ToInt32(Console.ReadLine());
-int[] array = new int[n];
-for (int i = 0; i < n; i++)
-{
-    Console.Write("Введите значения массива: ");
-    array[i] = Convert.ToInt32(Console.ReadLine());
+﻿int[] array = {0, 5, 2, 3, 5, 9, -1, 7};
+int[] res = QuickSort(array, 0, array.Length - 1);
+Console.Write("Массив" + string.Join(", ", res));
 
+int[] QuickSort(int[] arr, int minIndex, int maxIndex)
+{
+    if (minIndex >= maxIndex) return arr;
+    int pivot = GetPivotIndex(arr, minIndex, maxIndex);
+    QuickSort(arr, minIndex, pivot - 1);
+    QuickSort(arr, pivot + 1, maxIndex);
+    return arr;
 }
-
-Console.WriteLine("Начальный массив [" + string.Join(", ", array) + "]");
-for ( int i = 0; i < n; i++)
+int GetPivotIndex(int[] ar, int minIn, int maxIn)
 {
-    for (int j = 0; j < n - 1; j++)
+    int pivotIndex = minIn - 1;
+    for (int i = minIn; i <= maxIn - 1; i++)
     {
-        if (array[j] > array[j + 1])
+        if (ar[i] < ar[maxIn])
         {
-            int temp = array[j];
-            array[j] = array[j + 1];
-            array[j + 1] = temp;
+            pivotIndex++;
+            Swap(ar, i, pivotIndex);
         }
     }
-    Console.WriteLine(i + "[" + string.Join(", ", array) + "]");
+    pivotIndex++;
+    Swap(ar, pivotIndex, maxIn);
+    return pivotIndex;
+}
+void Swap(int[] inputArray,  int leftValue,  int rightValue)
+{
+    int temp = inputArray[leftValue];
+    inputArray[leftValue] = inputArray[rightValue];
+    inputArray[rightValue] = temp;
 }

@@ -1,1 +1,2 @@
-print("Hello")
+def f(n):
+    
