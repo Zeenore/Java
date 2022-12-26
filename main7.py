@@ -17,4 +17,4 @@ def random(min, max):
     return num
 
 
-print(random(1, 10000000))
+print(random(1, 1000))
