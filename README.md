@@ -1,2 +1,2 @@
 # Java
-##Работа с Python and Java, c#
+#Работа с Python and Java, c
