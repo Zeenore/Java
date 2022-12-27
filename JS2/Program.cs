@@ -1,39 +1,51 @@
-﻿class Program
+﻿/*
+[6, 15, 2, 9, -3]
+MIN = 6
+6 < 15
+6 > 2
+MIN = 2
+2 < 9
+2 > -3
+MIN = -3
+[-3, 6, 15, 2, 9]
+[6, 15, 2, 9]
+MIN = 6
+6 < 15
+6 > 2
+MIN = 2
+2 < 9
+[-3, 2, 6, 15, 9]
+MIN = 6
+6 < 15
+6 < 9
+[-3, 2, 6, 15, 9]
+MIN = 15
+15 > 9
+[-3, 2, 6, 9, 15]
+*/
+Console.WriteLine("Введите кол-во элементов массива:");
+int n = Convert.ToInt32(Console.ReadLine());
+// Заполнение массива
+int[] array = new int[n];
+for (int i = 0; i < n; i++)
 {
-    public static void Main(string[] args)
-    {
-        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
-        int[] res = QuickSort(array, 0, array.Length - 1);
-        Console.Write("Your Array = {" + string.Join(", ", res) + "}");
-
-        int[] QuickSort(int[] arr, int minIndex, int maxIndex)
-        {
-            if (minIndex >= maxIndex) return arr;
-            int pivot = GetPivotIndex(arr, minIndex, maxIndex);
-            QuickSort(arr, minIndex, pivot - 1);
-            QuickSort(arr, pivot + 1, maxIndex);
-            return arr;
-        }
-        int GetPivotIndex(int[] ar, int minIn, int maxIn)
-        {
-            int pivotIndex = minIn - 1;
-            for (int i = minIn; i <= maxIn - 1; i++)
-            {
-                if (ar[i] < ar[maxIn])
-                {
-                    pivotIndex++;
-                    Swap(ar, i, pivotIndex);
-                }
-            }
-            pivotIndex++;
-            Swap(ar, pivotIndex, maxIn);
-            return pivotIndex;
-        }
-        void Swap(int[] inputArray, int leftValue, int rightValue)
-        {
-            int temp = inputArray[leftValue];
-            inputArray[leftValue] = inputArray[rightValue];
-            inputArray[rightValue] = temp;
-        }
-    }
+    Console.Write("Введите число: ");
+    array[i] = Convert.ToInt32(Console.ReadLine());
 }
+Console.WriteLine();
+Console.WriteLine("Начальный массив: [" + string.Join(", ", array) + "]");
+// Cортировка
+for (int i = 0; i < n - 1; i++)
+{
+    int MinIndex = i;
+    for (int j = i + 1; j < n; j++)
+    {
+        if (array[j] < array[MinIndex])
+            MinIndex = j;
+    }
+    int temp;
+    temp = array[MinIndex];
+    array[MinIndex] = array[i];
+    array[i] = temp;
+}
+Console.WriteLine("Конечный массив: [" + string.Join(", ", array) + "]");
