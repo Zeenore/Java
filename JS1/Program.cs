@@ -1,6 +1,6 @@
-﻿int[] array = {0, 5, 2, 3, 5, 9, -1, 7};
+﻿int[] array = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 int[] res = QuickSort(array, 0, array.Length - 1);
-Console.Write("Your Array = " + string.Join(", ", res));
+Console.Write("Your Array = {" + string.Join(", ", res) + "}");
 
 int[] QuickSort(int[] arr, int minIndex, int maxIndex)
 {
