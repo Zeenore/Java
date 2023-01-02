@@ -2,7 +2,7 @@
 {
     public static void Main(string[] args)
     {
-        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+        int[] array = { 1, 0, -10, 9, 111, -111, 2, 6 };
         int[] res = QuickSort(array, 0, array.Length - 1);
         Console.Write("Your Sorted Array = {" + string.Join(", ", res) + "}");
 
